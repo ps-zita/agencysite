@@ -292,7 +292,6 @@ body {
       height: 105vh;
     }
     .iphone,
-    .studio {
-      top: calc(105vh - 50%);  /* Adjust for mobile height */
+    .studio,
     }
   }
