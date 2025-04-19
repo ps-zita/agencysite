@@ -268,6 +268,18 @@ body {
     height: 20vh;
   }
   
+  @media (min-width: 1080px) {
+    .iphone {
+      top: calc(154vh - 50%);
+      width: 40%;
+      left: 45%;
+    }
+    .studio {
+      top: calc(135.5vh - 50%);
+      width: 40%;
+      left: 30%;
+    }
+  }
   /* Media Query for Mobile - hide the logo and adjust for mobile */
   @media (max-width: 768px) {
     .logo {
