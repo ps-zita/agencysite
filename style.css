@@ -268,7 +268,7 @@ body {
     height: 20vh;
   }
   
-  @media (width: 1920px) and (height: 1080px) {
+  @media (width: 1920px){
   .iphone {
     top: calc(154vh - 50%);
     width: 40%;
