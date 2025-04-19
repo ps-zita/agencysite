@@ -1,0 +1,286 @@
+/* Global styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90vh;
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("noise.png"),
+      radial-gradient(circle at bottom left, #800080 40%, transparent 80%),
+      radial-gradient(circle at bottom right, #ff69b4 40%, transparent 80%);
+    background-repeat: no-repeat, repeat, no-repeat, no-repeat;
+    background-size: cover, auto, cover, cover;
+    background-blend-mode: normal, overlay, screen, screen;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Top Text Overlay styling with fade-in effect */
+  .text-overlay {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    z-index: 1100;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+  
+  .text-overlay h1 {
+    font-size: 4rem;
+    color: white;
+    margin: 0;
+  }
+  
+  .text-overlay h2 {
+    font-size: 2rem;
+    color: white;
+    margin: 0;
+    margin-top: 1rem;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* iPhone image positioning with clip-path */
+  .iphone {
+    position: absolute;
+    top: calc(155vh - 50%);  /* Position it so half is above the divider */
+    right: 10%;
+    width: 45%;
+    height: auto;
+    clip-path: inset(0 0 calc(50%) 0);  /* Cuts off everything below 50% of the image */
+    z-index: 1;
+  }
+  
+  /* Studio image positioning with clip-path */
+  .studio {
+    position: absolute;
+    top: calc(137vh - 50%);  /* Adjusted vertical positioning for Studio */
+    left: 25%;
+    width: 45%;
+    height: auto;
+    clip-path: inset(0 0 calc(28%) 0);  /* Cuts off part of the image */
+    z-index: 1;
+  }
+  
+  /* Header section - Navigation always on top */
+  .nav-wrapper {
+    position: fixed;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    z-index: 1200;
+    padding-bottom: 30vh;
+  }
+  
+  /* Logo styling using Roboto font */
+  .logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 20px;
+    white-space: nowrap;
+  }
+  
+  /* Navbar styling */
+  .navbar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #4b0082, #8b0000);
+    box-shadow: inset 0 0 10px pink;
+    overflow: hidden;
+    padding: 5px;
+  }
+  
+  /* Dark overlay beneath the shadows and buttons */
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Container for navigation buttons */
+  .nav-content {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  /* Navigation button styling */
+  .nav-btn {
+    position: relative;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #c85ec6;
+    background: linear-gradient(90deg, #7e58b7, #c85ec6);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Noise overlay inside the buttons */
+  .nav-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  
+  /* Hover effects for buttons */
+  .nav-btn:hover {
+    filter: brightness(0.85);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Divider line - now positioned absolutely with the content */
+  .divider {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
+    margin-top: 90vh;
+    z-index: 2;
+  }
+  
+  /* Marquee styling */
+  .marquee {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 70vh;
+  }
+  
+  /* Track styling for images */
+  .track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    gap: 4vmin;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    animation: marquee 22s linear infinite;
+  }
+  
+  /* Image styling */
+  .image {
+    width: 40vmin;
+    height: 56vmin;
+    object-fit: cover;
+    object-position: 100% center;
+    animation: panImage 21s linear infinite;
+  }
+  
+  /* Keyframes for infinite horizontal marquee panning of the track */
+  @keyframes marquee {
+    from {
+      transform: translateX(0) translateY(-50%);
+    }
+    to {
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+  
+  /* Keyframes for panning each image's content from right to left */
+  @keyframes panImage {
+    from {
+      object-position: 100% center;
+    }
+    to {
+      object-position: 0% center;
+    }
+  }
+  
+  /* Custom font example (Merriweather) */
+  .merriweather-uniquifier {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+  
+  /* Bottom text styling under scrolling images */
+  .bottom-text {
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+  }
+  
+  .bottom-text h1 {
+    font-size: 4rem;
+    margin: 0;
+  }
+  
+  .bottom-text h2 {
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1rem;
+  }
+  
+  /* Gradient styling for the word "placeholder" */
+  .gradient-text {
+    background: linear-gradient(90deg, purple, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  
+  /* Extra bottom space for scrolling */
+  .extra-space {
+    height: 20vh;
+  }
+  
+  /* Media Query for Mobile - hide the logo and adjust for mobile */
+  @media (max-width: 768px) {
+    .logo {
+      display: none;
+    }
+    .divider {
+      margin-top: 105vh;
+    }
+    body::before {
+      height: 105vh;
+    }
+    .iphone,
+    .studio {
+      top: calc(105vh - 50%);  /* Adjust for mobile height */
+    }
+  }
